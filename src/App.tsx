@@ -8,6 +8,7 @@ import { Company } from './components/types';
 import HomeManageLoading from './pages/Home';
 import NotFound from './pages/NotFound';
 import CompanyPage from './pages/CompanyPage'
+import './App.css'
 
 const router = createBrowserRouter ([
   {
