@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material'
-// import { makeStyles } from '@material-ui/core/styles'
+import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material'
+import axios from 'axios'
 
 import manageLoading from '../components/manageLoading'
-import axios from 'axios'
+// import './../App.css'
 
 interface Company {
     id: string,
@@ -27,7 +27,7 @@ const Home = () => {
     const [companies, setCompanies] = useState<Company[]>([]);
 
     useEffect(() => {
-        axios.get('https://api.openbrewerydb.org/breweries')
+        axios.get('https://api.openbrewerydb.org/v1/breweries')
             .then(response => {
                 setCompanies(response.data);
             })
@@ -35,7 +35,7 @@ const Home = () => {
                 console.log(error);
             })
     }, [])
-    
+
     return (
         <div>
             <Typography variant="h4" gutterBottom>
@@ -44,33 +44,39 @@ const Home = () => {
             <Grid container spacing={3}>
                 {companies.map(company => (
                     <Grid item key={company.id} xs={12} sm={6} md={4}>
-                        <Card variant="outlined">
-                            <CardContent>
-                                <Typography variant="h5" component="h2">
-                                    {company.name}
-                                </Typography>
-                                <Typography color="textSecondary">
-                                    {company.city}, {company.state_province}
-                                </Typography>
-                                <Typography variant="body2" component="p">
-                                    {company.brewery_type}
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">Learn More
-                                </Button>
-                            </CardActions>
-                        </Card>
+                        <Box>
+                            <Card variant="outlined">
+                                <CardContent>
+                                    <Typography variant="h5" component="h2">
+                                        {company.name}
+                                    </Typography>
+                                    <Typography color="textSecondary">
+                                        {company.city}, {company.state_province}
+                                    </Typography>
+                                    <Typography variant="body2" component="p">
+                                        {company.brewery_type}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button size="small">
+                                        <a href={company.website_url} target="_blank" rel="noopener noreferrer">
+                                            Learn More
+                                        </a>
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </Box>
                     </Grid>
                 ))}
             </Grid>
+            <footer>No Copyright</footer>
         </div>
     )
 }
 
 const HomeManageLoading = manageLoading<Props>(
     Home,
-    'https://api.openbrewerydb.org/breweries'
-  );
+    'https://api.openbrewerydb.org/v1/breweries'
+);
 
 export default HomeManageLoading
