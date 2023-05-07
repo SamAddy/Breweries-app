@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Company } from './types'
 import Home from '../pages/Home'
+import { TextField } from '@mui/material'
 
 const SearchBar = () => {
   const [search, setSearch] = useState('')
@@ -10,12 +11,15 @@ const SearchBar = () => {
     setSearch(event.target.value)
   }
 
-  if (filteredData) {
-    // return <Home data={filteredData} loading={false} error="" handleSearch={handleSearch} />
-  }
-
   return (
-    <div>SearchBar</div>
+    <div>
+      <TextField 
+        id='outlined-basic'
+        variant='outlined'
+        label='Search for brewery'
+        placeholder='Search for brewery by name'
+        onChange={handleSearch}/>
+    </div>
   )
 }
 
