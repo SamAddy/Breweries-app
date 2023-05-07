@@ -22,7 +22,7 @@ This is a simple web application that allows users to search for breweries using
 1. Clone the repository to your local machine using the command 
 
 ```
-    https://github.com/Integrify-Finland/fs15_8-breweries-app.git
+    https://github.com/SamAddy/fs15_8-breweries-app.git
 ```
 2. Install the dependencies by running npm install in the project directory.
 
