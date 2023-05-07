@@ -3,8 +3,6 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/materia
 
 import { Company } from './types';
 
-
-
 interface Props {
     company: Company;
 }
@@ -24,7 +22,11 @@ const CompanyCard = ({ company }: Props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button size="small">
+                    <a href={company.website_url} target="_blank" rel="noopener noreferrer">
+                        Learn More
+                    </a>
+                </Button>
             </CardActions>
         </Card>
     )
