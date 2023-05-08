@@ -1,11 +1,12 @@
 import React from 'react'
-import Link from '@mui/material/Link'
+import { Link } from 'react-router-dom'
 
 const NotFound = () => {
   return (
-    <div>This page is not available.
-        You may check out the home page.
-        {/* <Link to="/">Home</Link> */}
+    <div>
+      <h1>This page is not available.</h1>
+        You may check out the 
+        <Link to="/"> home page</Link>.
     </div>
   )
 }
