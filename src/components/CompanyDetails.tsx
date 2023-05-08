@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Button, Card, CardContent, List, ListItem, ListItemText, Typography } from '@mui/material'
+import { Button, List, ListItem, ListItemText, Typography } from '@mui/material'
 import axios, { AxiosError } from 'axios'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 
 import { Company } from './types'
-import NotFound from '../pages/NotFound'
 
 const CompanyDetails = () => {
     const { id } = useParams<{ id: string }>()
     const [company, setCompany] = useState<Company | null>(null)
-
+    const [error, setError] = useState<string>("")
+    const [loading, setLoading] = useState<boolean>(true)
     useEffect(() => {
         axios
             .get(`https://api.openbrewerydb.org/v1/breweries/${id}`)
             .then ((respone) => {
                 setCompany(respone.data)
+                setLoading(false)
             })
             .catch((e) => {
                 const error = e as AxiosError
-                console.log(error.message)
+                setError(error.message)
+                setLoading(false)
             })
     }, [id])
-    
+    if (loading) {
+        return <p>Loading..</p>
+    }
+    if (error) {
+        return <p>{error}</p>
+    }
     if (!company) {
-        return <NotFound />
+        return <p>No data found.</p>
     }
     const latitude = parseFloat(company.latitude)
     const longitude = parseFloat(company.longitude)
-    const position = latitude && longitude ? [latitude, longitude] : [51.505, -0.09]
-
     return (
         <div>
             {company ? (
@@ -38,15 +43,6 @@ const CompanyDetails = () => {
                     <Typography variant="h4" component="h1">
                         {company.name}
                     </Typography>
-                    {/* <MapContainer center={position} zoom={13} style={{ height: "400px" }}>
-                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                        <Marker position={position}>
-                            <Popup>
-                                {company.name} <br /> {company.street}, {company.city},{" "}
-                                {company.state} {company.postal_code}, {company.country}
-                            </Popup>
-                        </Marker>
-                    </MapContainer> */}
                     <List>
                         <ListItem>
                             <ListItemText primary="Type" secondary={company.brewery_type} />
@@ -70,6 +66,18 @@ const CompanyDetails = () => {
                             <ListItemText primary="Website" secondary={company.website_url} />
                         </ListItem>
                     </List>
+                    <MapContainer center={[latitude, longitude]} zoom={13} scrollWheelZoom={false} style={{ height: "400px" }}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <Marker position={[latitude, longitude]}>
+                            <Popup>
+                                {company.name} <br /> {company.street}, {company.city},{" "}
+                                {company.state} {company.postal_code}, {company.country}
+                            </Popup>
+                        </Marker>
+                    </MapContainer>
                     <Button variant="contained" color="primary" onClick={() => window.history.back()}>
                         Go Back
                     </Button>
