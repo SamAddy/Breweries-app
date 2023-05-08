@@ -1,20 +1,45 @@
 body {
+    background-color: rgb(185, 113, 25);
+    max-width:calc(100vw - 4rem);
+    width:70rem;
+    margin:0 auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+nav a{
     padding: 20px;
-    background-color: bisque;
-    /* text-align: center; */
 }
 
-h4 {
-    font-weight: 900;
-    font-size: xx-large;
+a {
+    text-decoration: none;
+    color: black;
 }
 
-footer {
+.caption {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.card {
+    background-color: rgb(0, 255, 255);
+}
+
+.form {
     padding-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    
 }
+
+.contact {
+    justify-content: center;
+    display: flex;
+    gap: 2em;
+}
+
