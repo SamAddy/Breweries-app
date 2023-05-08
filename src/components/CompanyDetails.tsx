@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 
-import { Company } from './types'
+import { Company } from '../types/types'
 
 const CompanyDetails = () => {
     const { id } = useParams<{ id: string }>()
