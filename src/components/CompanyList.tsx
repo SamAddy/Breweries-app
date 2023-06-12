@@ -4,19 +4,9 @@ import { Grid, Box, Card, CardActionArea, CardContent, Typography, CardActions, 
 import { Link } from 'react-router-dom'
 
 import manageLoading from './manageLoading'
-
-interface Company {
-    id: string,
-    name: string,
-    brewery_type: string,
-    address_1: string,
-    address_2: string | null,
-    city: string,
-    state_province: string
-    postal_code: string,
-    country: string,
-    website_url: string
-}
+import { Company } from '../types/Company'
+import Footer from '../pages/Footer'
+import Header from '../pages/Header'
 
 const useDebounce = <T,>(func: (items: T[], filter: string) => T[], items: T[], delay: number = 1000) => {
   const [filteredData, setFilteredData] = useState(items)
@@ -41,7 +31,7 @@ const filterBreweries = (breweries: Company[], filter: string) => {
 
 const CompanyList = ({ data }: { data: Company[] }) => {
   const [companies, setCompanies] = useState<Company[]>([])
-    const { onChangeFilter, filter, filteredData } = useDebounce<Company>(filterBreweries, companies)
+  const { onChangeFilter, filter, filteredData } = useDebounce<Company>(filterBreweries, companies)
     useEffect(() => {
         axios.get('https://api.openbrewerydb.org/v1/breweries')
             .then(response => {
@@ -84,19 +74,23 @@ const CompanyList = ({ data }: { data: Company[] }) => {
   }, [filteredData])
   return (
     <div>
-      <Typography variant="h4" align="center" className='caption' gutterBottom>
-        Breweries
-        <TextField
-          placeholder="Search by name"
-          variant="outlined"
-          className="search"
-          value={filter}
-          onChange={onChangeFilter}
-        />
-      </Typography>
-      <Grid container spacing={3}>
-        {memoizedCompanyCards}
-      </Grid>
+      <Header />
+      <main>
+        <Typography variant="h4" align="center" className='caption' gutterBottom>
+          Breweries
+          <TextField
+            placeholder="Search by name"
+            variant="outlined"
+            className="search"
+            value={filter}
+            onChange={onChangeFilter}
+          />
+        </Typography>
+        <Grid container spacing={3}>
+          {memoizedCompanyCards}
+        </Grid>
+      </main>
+      <Footer />
     </div>
   )
 }

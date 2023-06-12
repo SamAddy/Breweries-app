@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
 
-import { Company } from '../types/types';
+import { Company } from '../types/Company';
 
 interface Props {
     company: Company;

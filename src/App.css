@@ -43,3 +43,6 @@ footer {
     gap: 2em;
 }
 
+.login__button {
+    align-items: center;
+}

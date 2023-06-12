@@ -15,12 +15,12 @@ const manageLoading = <T extends unknown>(ChildComponent: (props: { data: T }) =
                 })
                 .catch((e) => {
                     const error = e as AxiosError
-                    setError(error.message)
+                    setError(error.message)                 
                     setLoading(false)
                 })
             }, [])
         if (loading) {
-            return <p>Data is been loaded...</p>
+            return <p>Loading...</p>
         }
         if (error) {
             return <p>{error}</p>

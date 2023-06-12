@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { List, ListItem, ListItemText, Typography } from '@mui/material'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 
@@ -29,6 +29,7 @@ const CompanyDetails = () => {
                 }
                 else {
                     console.log(error)
+                    setError(error)
                     setLoading(false)
                 }
             })

@@ -11,12 +11,13 @@ const Home = () => {
       <header>
         <nav>
           <Link to="/">Home</Link>
-          <Link to="breweries">Breweries</Link>
           <Link to="contact">Contact</Link>
         </nav>
       </header>
       <hr />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <hr />
       <footer>
         <div className="contact">
@@ -24,7 +25,6 @@ const Home = () => {
             <GitHub />
           </a>
           <Link to='/'>Home</Link>
-          <Link to='breweries'>Breweries</Link>
           <Link to='contact'>Contact</Link>
         </div>
         <Typography className="copyright">&copy; 2023 SamAddy</Typography>
