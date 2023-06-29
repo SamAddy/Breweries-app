@@ -26,11 +26,11 @@ This is a web application that allows users to search for breweries using the [O
 ```
     https://github.com/SamAddy/fs15_8-breweries-app.git
 ```
-2. Install the dependencies by running npm install in the project directory.
+2. Install the dependencies by running ``` npm install ``` in the project directory.
 
-3. Start the development server with the command npm start.
+3. Start the development server with the command ``` npm start ```.
 
-4. Open your web browser and go to http://localhost:3000 to view the application.
+4. Open your web browser and go to ``` http://localhost:3000 ``` to view the application.
 
 ## Usage
 
