@@ -2,7 +2,7 @@ import React from 'react'
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse, googleLogout } from '@react-oauth/google'
 import jwt_decode from "jwt-decode"
 
-import { GoogleData } from '../types/User'
+import { GoogleData } from '../Interface/User'
 import CustomBtn from './CustomBtn'
 
 // const handleSubcribe = (event: React.FormEventHandler<HTMLButtonElement>) => {

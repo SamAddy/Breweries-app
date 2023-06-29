@@ -4,7 +4,7 @@ import { Grid, Box, Card, CardActionArea, CardContent, Typography, CardActions, 
 import { Link } from 'react-router-dom'
 
 import manageLoading from './manageLoading'
-import { Company } from '../types/Company'
+import { Company } from '../Interface/Company'
 import Footer from '../pages/Footer'
 import Header from '../pages/Header'
 

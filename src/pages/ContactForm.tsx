@@ -5,7 +5,7 @@ import GoogleOauth from '../components/GoogleOauth'
 
 import Footer from './Footer'
 import Header from './Header'
-import { GoogleData } from '../types/User'
+import { GoogleData } from '../Interface/User'
 
 
 const GoogleLogout = () => {

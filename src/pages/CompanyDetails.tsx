@@ -5,9 +5,9 @@ import axios from 'axios'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 
-import { Company } from '../types/Company'
+import { Company } from '../Interface/Company'
 import Footer from './Footer'
-import { ValidationError } from '../types/Error'
+import { ValidationError } from '../Interface/Error'
 
 const CompanyDetails = () => {
     const { id } = useParams<{ id: string }>()

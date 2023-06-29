@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Company } from '../types/Company'
+import { Company } from '../Interface/Company'
 import Home from '../pages/Home'
 import { TextField } from '@mui/material'
 
