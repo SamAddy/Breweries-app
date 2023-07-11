@@ -2,7 +2,7 @@
 
 This is a web application that allows users to search for breweries using the [Open Brewery DBAPI](https://www.openbrewerydb.org/documentation). Click [here](https://the-breweries-app.netlify.app) to view app.
 
-![Alt text](Brewery-App.png)
+![Brewery App](Brewery-App.png)
 
 ## Features
 
